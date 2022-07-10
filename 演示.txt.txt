@@ -35,3 +35,7 @@ git push
 2.stage changed
 3.commit
 4.push
+
+你的git很日怪  经常push不上去 应该是网络问题
+现在分别用命令行
+gui工具 提交你的修改
