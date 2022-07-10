@@ -29,3 +29,9 @@ git push
 帮我打开文件
 
 刚刚提交之后又加了这么多文字，这些都会被识别为修改
+
+
+1.修改文档
+2.stage changed
+3.commit
+4.push
