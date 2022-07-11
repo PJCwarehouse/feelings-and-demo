@@ -1,0 +1,2 @@
+python中print的使用和C差别很大，要注意python中的format语法
+注意缩进
