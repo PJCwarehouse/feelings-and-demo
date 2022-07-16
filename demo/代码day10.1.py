@@ -5,7 +5,7 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        n = len(nums)
+        n = nums.len
         for i in range(n):
             for j in range(i+1,n):
                 if nums[i]+nums[j] == target:
