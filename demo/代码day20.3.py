@@ -1,5 +1,5 @@
-def claS(n)
-    if n==1 or n==2
+def claS(n):
+    if n==1 or n==2:
         return n
-    else
+    else:
         return claS(n-1)+claS(n-2)
