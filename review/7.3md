@@ -1,0 +1,9 @@
+idea安装与配置
+1.遇到软件需付费，先看有无破解版，无法破解再去使用阉割或者试用版
+2.ctrl F 为搜索代码
+3.遇到问题通过使用一块一块的代码排除去纠错
+4.Gradle和Maven都是Java项目构建工具，但是它们有以下几个区别：
+ 1. 语法：Gradle使用Groovy DSL（Domain Specific Language），而Maven使用XML。 
+ 2. 构建速度：Gradle构建速度比Maven快，因为Gradle采用增量编译和缓存机制。 
+ 3. 灵活性：Gradle比Maven更灵活，允许用户自定义任务和构建逻辑。
+ 现多使用gradle
