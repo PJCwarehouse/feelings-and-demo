@@ -1,0 +1,18 @@
+三种导入jar包的途径：
+1. maven添加依赖导入。在pom.xml中直接添加
+外部包：
+2. 通过Modules的Dependencies添加，选择硬盘上的jar包，Apply -> OK。(会添加到External libraries内)
+内部包：
+3.创建lib，将需要依赖的包复制到lib下(相当于把包从外部转移到内部)，
+将lib下的包通过Modules的Dependencies添加(不会在External libraries内显示) 
+或者直接右键lib，add as library(不会在External libraries内显示) 
+通过Libraries添加，自动导入lib目录下的相关jar包，删除多余内容，重新添加需要的jar包。
+
+https://www.cnblogs.com/classicltl/p/16498122.html
+https://blog.csdn.net/qq_43599841/article/details/127368168
+
+
+module是为项目添加jar包依赖，libraries是一个库，你所为项目添加的依赖jar包会添加到libraries中
+一种是添加项目lib目录下的jar包的图标，像文件夹
+一种是在其他目录添加的jar包，像柱状图。
+以后要添加新的jar包，只要在Library目录中之前创建的项目lib目录下添加进去即可

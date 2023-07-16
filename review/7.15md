@@ -1,0 +1,82 @@
+梳理一下基础知识
+1.springboot运行环境
+IDEA: 编译工具软件
+JDK1.8: Java运行环境
+MySQL: 数据库，存储数据的地方
+
+springboot 基本构架
+
+pojo层（model）
+实体层 数据库在项目中的类
+model是模型的意思，与entity、domain、pojo类似，是存放实体的类。
+类中定义了多个类属性，并与数据库表的字段保持一致，一张表对应一个model类。
+主要用于定义与数据库对象应的属性，提供get/set方法,tostring方法,有参无参构造函数。
+
+pojo,entity,vo三种类的区别：https://blog.csdn.net/qq_48642405/article/details/121872704
+
+dao层（mapper）
+持久层，主要与数据库进行交互
+又被成为mapper层，叫数据持久层，先设计接口，然后在配置文件中进行配置其实现的关联。
+dao层会调用pojo层，dao中会定义实际使用到的方法，比如增删改查。
+dao层的作用为访问数据库，向数据库发送sql语句，完成数据的增删改查任务。
+dao层的数据源和数据库连接的参数都是在配置文件中进行配置的，配置文件一般在同层的xml文件夹中
+数据持久化操作就是指，把数据放到持久化的介质中，同时提供增删改查操作，比如数据通过hibernate插入到数据库中
+service层（定义接口）
+ 业务层，控制业务，Service层叫服务层，被称为服务，粗略的理解就是对一个或多个DAO进行的再次封装，封装成一个服务
+
+service层调用dao层接口，接收dao层返回的数据，完成项目的基本功能设计。
+
+完成功能的设计和dao层一样都是先设计接口，再创建要实现的类，然后在配置文件中进行配置其实现的关联。
+
+service的impl是把mapper和service进行整合的文件 封装Service层的业务逻辑有利于业务逻辑的独立性和重复利用性。
+
+controller层（处理前台发送的请求）
+控制层 控制业务逻辑
+controller层负责具体的业务模块流程的控制，controller层负责前后端交互，接受前端请求，调用service层，接收service层返回的数据，最后返回具体的页面和数据到客户端。
+业务逻辑
+        controller-->service接口-->serviceImpl-->dao接口-->mapper.xml-->db
+
+
+        在具体的项目中，其流程为：Controller层调用Service层的方法，Service层调用Dao层中的方法，其中调用的参数是使用Pojo层进行传递的。总的来说这样每层做什么的分类只是为了使业务逻辑更加清晰，写代码更加方便，所以有时候也需要根据具体情况来，但是大体的都是这样处理的，因为它其实就是提供一种规则，让你把相同类型的代码放在一起，这样就形成了层次，从而达到分层解耦、复用、便于测试和维护的目的
+
+原文链接：https://blog.csdn.net/weixin_48426115/article/details/126865402
+
+建议各个包里面的东西名字以实体类为起点，比如：entity里面定义实体User,那么其他三个分别为，UserMapper,UserService,UserController，这里大家一定要修改一下目录，别跟我一样
+它们之间的关系为：mapper层注入到service层，service层注入到controller层，层层嵌套
+开发顺序为;
+entity.User.java
+这里是实现有参无参构造，setter，getter，toString()方法
+
+
+遇到的问题
+3.1.0版本也许无法访问org.springframework.stereotype.Controller
+解决方法
+版本问题 解决方案 将pom文件内的spring版本降低
+<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.8.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+导致的问题，mysql-connector-j无法自动识别
+解决方法，指定版本<version>8.0.33</version>
+<dependency>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.0.33</version>
+			<scope>runtime</scope>
+		</dependency>
+问题：SLF4J: Class path contains multiple SLF4J bindings
+包含多个日志依赖，无法选中某一个
+解决方法
+先找原因，即先查看项目A的pom.xml看导入了什么日志依赖：
+删掉不需要的日志依赖
+
+问题：SpringBoot直接访问html页面失败
+无法解析视图login
+解决方法
+添加依赖
+ <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
