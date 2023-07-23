@@ -14,20 +14,20 @@ git status
 git add .
 git commit -m "备注信息"
 8.将本地文件push到远程仓库
-git push origin "分支名"
+git push -u origin "分支名"
 
 查看仓库配置
 git remote -v
 
 
-#切换远程仓库
+# 切换远程仓库
 git remote rm origin(删除仓库)
 git remote add origin url(添加新仓库)
 
-#在本地分支切换到新创建的分支：
+# 在本地分支切换到新创建的分支：
 
 git checkout xxx
-② 报错：
+报错：
 error: pathspec 'XXX' did not match any file(s) known to git
 
 解决方法：
@@ -40,6 +40,19 @@ git fetch**
 3.切换到远程同事分支:
 
 git checkout origin/XXX
+
+
+4.现在可以看到自己的分支是一串数字字母，这时新建并切换到同事的分支：
+git checkout -b XXX
+
+5.现在需要跟远程的同事分支进行关联：
+git branch -u origin/XXX XXX
+
+
+# 将github的代码拉到本地仓库中
+git pull
+git pull --rebase origin master
+
 
 
 ···················································
