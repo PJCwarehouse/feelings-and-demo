@@ -15,7 +15,7 @@ git add .
 git commit -m "备注信息"
 8.将本地文件push到远程仓库
 git push -u origin "分支名"
-
+//push之前最好先pull一下远程仓库，防止冲突
 查看仓库配置
 git remote -v
 
