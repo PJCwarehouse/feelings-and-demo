@@ -68,6 +68,8 @@ git status 就可以看你当前和远端仓库的差别
 现在看git status 就可以看到他识别到 ：新增了一个文件
 
 3.git commit -m"提交信息" 提交（本地仓库）这一步执行完会提交到本地仓库并产生一条记录
+git commit -m"[feat]"==feature 功能新增的意思
+git commit -m"[fix]"==fix bug 修复 bug 的意思
 
 4.同步到远端仓库：git push
 
