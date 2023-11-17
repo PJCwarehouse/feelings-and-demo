@@ -52,7 +52,7 @@ git branch -u origin/XXX XXX
 # 将github的代码拉到本地仓库中
 git pull
 git pull --rebase origin master
-
+使用git pull 根据远程仓库和本地仓库的状态不同，主要分为以下四种情况:https://www.jianshu.com/p/06a1c7f0fac0
 
 
 ···················································
@@ -75,10 +75,33 @@ git commit -m"[fix]"==fix bug 修复 bug 的意思
 
 
 ···················································
-#gui的提交方式
+# gui的提交方式
 
 1.修改文档
 2.stage changed
 3.commit
 4.push
+
+# git代理的设置
+git设置和取消代理的作用
+当我们访问GitHub的时候一般都会使用梯子，所以往上推代码的时候也是需要梯子，没有梯子推送成功概率很低，一般都会报错超时，所以设置梯子提高访问成功率文章来源地址
+
+取消代理是因为，访问Gitee的时候不需要梯子，所以要取消代理文章地址
+http和https的代理是分开设置的，还可以设置socks5的代理
+
+1.设置代理
+git config --global http.proxy  http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+2.取消代理
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+3.查看代理
+git config --global --get http.proxy
+git config --global --get https.proxy
+4.拓展知识
+git helper -a // 查看全部git子命令
+
+关于git 和 clash的关系
+当clash打开时，代理会自动开始，无论是否开启系统代理，git clone都会默认使用已有的代理
+当clash关闭后，代理会自动取消
 
