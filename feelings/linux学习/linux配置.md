@@ -56,4 +56,57 @@ https://www.bilibili.com/video/BV12q4y1U7sZ/?spm_id_from=333.880.my_history.page
 之后操作后面加“;”，不然系统不知道命令已经完成
 常用命令：https://www.dbs724.com/391589.html
 
+**linux下nginx配置**
 
+###### 基于Debian/Ubuntu的系统上的安装步骤：
+
+更新软件包列表：
+sudo apt update
+
+安装Nginx：
+sudo apt install nginx
+
+安装完成后，启动Nginx服务：
+sudo service nginx start
+
+
+在使用 Nginx 作为 Web 服务器时，可以通过配置实现 HTTP 自动跳转 HTTPS。这可以确保用户始终使用 HTTPS 访问网站，从而提高网站的安全性。
+
+###### 以下是如何配置 Nginx 实现 HTTP 自动跳转 HTTPS 的步骤：
+安装 SSL 证书
+在启用 HTTPS 之前，需要为域名安装 SSL 证书。可以从证书颁发机构（CA）购买 SSL 证书，或使用自签名证书。
+
+修改 Nginx 配置文件
+在安装了 SSL 证书之后，需要修改 Nginx 的配置文件以启用 HTTPS 和 HTTP 自动跳转 HTTPS。
+
+打开 Nginx 配置文件（通常位于 /etc/nginx/nginx.conf），找到的网站配置块。在该配置块中添加以下内容：
+
+perlCopy codeserver {
+    listen 80;
+    server_name example.com;
+    return 301 https://$server_name$request_uri;//这里是强制转换为https
+}
+server {
+    listen 443 ssl;
+    server_name example.com;
+    ssl_certificate /path/to/ssl/certificate;
+    ssl_certificate_key /path/to/ssl/certificate_key;
+    # other SSL configuration options
+    # ...
+    # other server configuration options
+    # ...
+}
+复制
+该配置块包括两个部分：
+
+第一个部分监听 HTTP（端口 80），并将所有的 HTTP 请求重定向到 HTTPS。
+第二个部分监听 HTTPS（端口 443），并包括 SSL 证书和其他 SSL 配置。
+请将 example.com 替换为您自己的域名，并将 /path/to/ssl/certificate 和 /path/to/ssl/certificate_key 替换为 SSL 证书和证书密钥的实际路径。
+
+重新加载 Nginx 配置文件 
+
+执行以下命令，验证配置文件是否存在问题。
+sudo nginx -t
+完成配置文件的修改之后，需要重新加载 Nginx 配置文件以使更改生效。可以使用以下命令重新加载 Nginx 配置文件：
+sudo systemctl reload nginx
+这将重新加载 Nginx 并应用刚才的更改。现在，网站就应该可以通过 HTTPS 访问，并且所有的 HTTP 请求都会自动重定向到 HTTPS。
