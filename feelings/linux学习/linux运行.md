@@ -31,6 +31,18 @@ java -jar your_project.jar: 启动Java项目的命令。
 此命令将Java项目作为一个后台进程运行，关闭终端后该进程仍然会继续运行。nohup 将输出写入当前目录下的 nohup.out 文件，可以通过查看该文件来了解项目的输出。
 
 ## 关闭在后台运行的 Java 项目
+
+`jps` 是 Java Virtual Machine Process Status Tool 的缩写，用于显示当前系统上所有正在运行的 Java 进程。
+在命令行中使用 `jps -m` 可以显示 Java 进程的主类（Main Class）的名称，这对于确定正在运行的 Java 应用程序很有用。
+具体而言，`jps -m` 命令的输出将包括 Java 进程的进程ID（PID）以及其对应的主类名称。这样的输出可以帮助你迅速了解在系统上运行的 Java 进程及其主要功能。
+例如：
+
+jps -m
+1234 MainClass1
+5678 MainClass2
+
+在这个示例中，`1234` 和 `5678` 是两个 Java 进程的PID，分别对应 `MainClass1` 和 `MainClass2`。
+
 要关闭在后台运行的 Java 项目，您需要找到相应的 Java 进程，并终止它。首先，您可以使用 `ps` 命令查看正在运行的 Java 进程的详细信息：
 
 

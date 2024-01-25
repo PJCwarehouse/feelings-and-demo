@@ -23,6 +23,9 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
 1、首先建空数据库
 mysql>create database dbname ;
 2、导入数据库
+
+导入前把文件中的所有的utf8mb4_0900_ai_ci替换为utf8_general_ci
+以及utf8mb4替换为utf8
 方法一：
 （1）选择数据库
 mysql>use dbname ;
@@ -34,4 +37,8 @@ mysql>source /home/xxxx/dbname.sql;
 方法二：
 
 mysql -u 用户名 -p 密码 数据库名 < 数据库名.sql
-//数据结构有问题没有运行成功
+也即是
+mysql -u root -p wndb < /home/ubuntu/wndb.sql
+
+删除数据库
+DROP DATABASE your_database_name;

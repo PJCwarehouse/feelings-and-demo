@@ -10,12 +10,12 @@
 3. **启用WSL 2：** Windows Subsystem for Linux 2（WSL 2）是一种轻量级的虚拟化技术，可以在Windows上运行Linux内核。你可以尝试启用WSL 2，并在WSL 2中运行Docker。确保你的Windows版本支持WSL 2，然后按照Docker官方文档中的说明配置Docker CLI来与WSL 2一起使用。
 
 
-###1.下载客户端：
+### 1.下载客户端：
 "https://docs.docker.com/desktop/install/windows-install/" 或者 "https://hub.docker.com/"
 2.在家庭版windows下载docker需要启用wsl,首先，确保你的windows版本满足 Windows 10 version 2004 and higher (Build 19041 and higher) or Windows 11
 如果电脑windows版本不满足条件，只能手动安装wsl
 "https://learn.microsoft.com/en-us/windows/wsl/install"
-###3.以下所有命令都是用管理员权限打开PowerShell，然后输入
+### 3.以下所有命令都是用管理员权限打开PowerShell，然后输入
 
 **wsl --install**
 **这里我用的是wsl --install -d Ubuntu**
