@@ -20,9 +20,9 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
 
 
 #导入数据库
-1、首先建空数据库
+1. 首先建空数据库
 mysql>create database dbname ;
-2、导入数据库
+2. 导入数据库
 
 导入前把文件中的所有的utf8mb4_0900_ai_ci替换为utf8_general_ci
 以及utf8mb4替换为utf8
@@ -42,3 +42,42 @@ mysql -u root -p wndb < /home/ubuntu/wndb.sql
 
 删除数据库
 DROP DATABASE your_database_name;
+
+数据库命令大全：https://www.dbs724.com/391589.html
+
+一、MySQL数据库
+
+1、查看MySQL版本
+
+mysql -V
+
+2、检查MySQL服务是否启动
+
+systemctl status mysqld
+
+3、登陆MySQL
+
+mysql -u root -p
+
+4、查看所有数据库
+
+show databases;
+
+5、进入某个数据库
+
+use database_name;
+
+6、查看数据库中所有表
+
+show tables;
+
+7、查看表结构
+
+desc table_name;
+
+8、查看表中数据
+
+select * from table_name;
+
+9. 退出数据库
+exit
