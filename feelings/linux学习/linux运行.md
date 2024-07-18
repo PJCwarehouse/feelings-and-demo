@@ -2,6 +2,9 @@
 切记要到服务器的防火墙中打开使用的端口，否则浏览器访问不到
 
 ## Linux切换用户
+su - root
+root 用户密码：123456
+ubuntu 用户密码：whitenight...123456
 先切换到root用户，再切换到ubuntu用户
 使用 "ubuntu" 用户： 如果您有 "ubuntu" 用户的密码，您可以直接切换到 "ubuntu" 用户。
 su - ubuntu

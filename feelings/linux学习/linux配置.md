@@ -110,3 +110,27 @@ sudo nginx -t
 完成配置文件的修改之后，需要重新加载 Nginx 配置文件以使更改生效。可以使用以下命令重新加载 Nginx 配置文件：
 sudo systemctl reload nginx
 这将重新加载 Nginx 并应用刚才的更改。现在，网站就应该可以通过 HTTPS 访问，并且所有的 HTTP 请求都会自动重定向到 HTTPS。
+
+2024.6.5
+**普通用户权限不能开启1024以下的端口**
+Spring Boot 应用无法启动内嵌的 Tomcat 服务器监听 443 端口，原因是权限被拒绝。
+根据错误日志，这是由于在 Linux 上以普通用户权限运行 Spring Boot 应用时，没有足够的权限绑定到低端口（<1024）。
+
+解决这个问题的一种方法是使用特权用户或者使用 authbind 工具允许非特权用户绑定到低端口。
+使用 authbind 工具
+安装 authbind：
+sudo apt-get install authbind
+
+配置 authbind：
+sudo touch /etc/authbind/byport/443
+sudo chmod 500 /etc/authbind/byport/443
+
+sudo chown your_user_name /etc/authbind/byport/443
+替换 your_user_name 为你的用户名。
+
+使用 authbind 运行应用：
+
+修改 Spring Boot 应用的启动脚本，使用 authbind 运行：
+
+authbind --deep java -jar your-application.jar
+这样应用就会以特权用户权限运行，并能够成功绑定到 443 端口。

@@ -24,8 +24,8 @@ ALTER USER 'root'@'localhost' IDENTIFIED BY 'your_new_password';
 mysql>create database dbname ;
 2. 导入数据库
 
-导入前把文件中的所有的utf8mb4_0900_ai_ci替换为utf8_general_ci
-以及utf8mb4替换为utf8
+**导入前把文件中的所有的 utf8mb4_0900_ai_ci 替换为 utf8_general_ci 格式**
+**以及 utf8mb4 替换为 utf8 格式**
 方法一：
 （1）选择数据库
 mysql>use dbname ;
